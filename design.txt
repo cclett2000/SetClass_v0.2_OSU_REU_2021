@@ -1,0 +1,55 @@
+test data
+ - want to compare selected fingerprint to all class profiles (profiles included)
+ - Create separate fingerprint for comparison to original
+ - update class profiles with fingerprint
+ - update class profile each fingerprint update
+
+
+
+                     # profile updater - training
+                    nn_profile_data = [fingerprint[fp][3]]
+
+                    for c in range(len(class_profile[fingerprint[fp][2]])):
+                        nn_profile_data.append(class_profile[fingerprint[fp][2]][c][0]) # profile[0] = avg. arrays; profile[1] = fp count
+
+                    # print('Class Profile BFR', class_profile[fingerprint[fp][4]][0])
+
+                    prof_dist, prof_ind = NN_prof.fit(nn_profile_data).kneighbors(nn_profile_data)
+                    prof_ind = prof_ind[0][1] - 1
+
+                    closest_profile = class_profile[prof_ind][0][0]
+                    closest_profile_len = class_profile[prof_ind][0][1]
+
+                    fingerprint[fp][-1] = prof_ind
+                    nn_profile_data.clear()
+                    # print('Closest Profile BFR', class_profile[fingerprint[fp][2]][prof_ind], ', Closest IND:', prof_ind, 'Length:', closest_profile_len)
+                    # print(closest_profile, closest_profile_len)
+                    # print(class_profile[fingerprint[fp][2]][0][0])
+                    # exit()
+
+                    if prof_ind != fingerprint[fp][-1]:
+                        class_profile[fingerprint[fp][2]][0][0] = [x * class_profile[fingerprint[fp][2]][0][1] for x in class_profile[fingerprint[fp][2]][0][0]]
+                        class_profile = [class_profile[y] - fingerprint[fp][3][y] for y in range(anchor_count)]
+                        class_profile[fingerprint[fp][2]][0][1] -= 1
+                        class_profile = [z / class_profile[fingerprint[fp][2]][0][1] for z in class_profile[fingerprint[fp][2]][0][0]]
+
+                        closest_profile = [x * closest_profile_len for x in closest_profile]
+                        closest_profile = [closest_profile[y] + fingerprint[fp][3][y] for y in range(anchor_count)]
+                        closest_profile_len += 1
+                        closest_profile = [z / closest_profile_len for z in closest_profile]
+
+                        # TODO: update fp with class/profile position
+
+                    # print(closest_profile)
+                    # for i in range(anchor_count):
+                    #     closest_profile = closest_profile - prev_fp[3]
+                    # print(type(int(fingerprint[3][0])))
+                    # exit()
+                    if prof_ind == fingerprint[fp][-1]:
+                        # print(prev_fp)
+                        # print(fingerprint[fp])
+
+                        closest_profile = [x * closest_profile_len for x in closest_profile]
+                        closest_profile = [closest_profile[i] - prev_fp[3][i] for i in range(anchor_count)]
+                        closest_profile = [closest_profile[j] + fingerprint[fp][3][j] for j in range(anchor_count)]
+                        closest_profile = [x / closest_profile_len for x in closest_profile]
