@@ -7,6 +7,7 @@ The algorithm this implements is based on Dr. Charu C. Aggarwal's Setwise Stream
 The main goal of this project was to the basics of learn about machine learning and to implement Dr. Aggarwal's algorithm, using a dataset collected from a real-world healthcare study to evaluate the proposed algorithm and to see what improvements could be made in the future. This alogrithm is a new approach to classifying data using machine learning (classification) with datasets composed of multiple subsets of data, allowing for a more accurate classification compared to density based classification. The algorithm also works in realtime, however, my implementation is more of a 'pseudo' realtime, given that the dataset I used was stored in a file opposed to being a stream of data.
 
 References:
+
 (Algorithm)
 - Charu C. Aggarwal. 2014. The setwise stream classification problem. In Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining (KDD '14). Association for Computing Machinery, New York, NY, USA, 432–441. DOI:https://doi.org/10.1145/2623330.2623751
   
