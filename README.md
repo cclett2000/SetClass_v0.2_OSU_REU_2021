@@ -1,5 +1,5 @@
 # SetClass_v0.2_OSU_REU_2021
-Project I worked on over the summer with Oklahoma State University's REU Program
+Project I worked on over the summer with Oklahoma State University's Research for Undergraduates (REU) Program
 
 The algorithm this implements is based on Dr. Charu C. Aggarwal's Setwise Stream Classification Problem 
 (Link: https://www.researchgate.net/publication/266660383_The_setwise_stream_classification_problem?enrichId=rgreq-32f5c639b9bb483b8bdb0fbc0f364ad3-XXX&enrichSource=Y292ZXJQYWdlOzI2NjY2MDM4MztBUzoyNTk5OTk3Nzk3ODI2NjBAMTQzOTAwMDE4NjU3OA%3D%3D&el=1_x_2&_esc=publicationCoverPdf;)
